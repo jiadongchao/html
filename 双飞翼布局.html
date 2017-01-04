@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+			1.两边固定，当中自适应
+			2.优先加载middle区域
+			3.扩展性比较强
+			4.等高
+			
+			两组实现的对比:
+			1.俩种布局方式都是把主列放在文档流最前面，使主列优先加载。
+			2.两种布局方式在实现上也有相同之处，都是让三列浮动，然后通过负外边距形成三列布局。
+			3.两种布局方式的不同之处在于如何处理中间主列的位置：
+					圣杯布局是利用父容器的左、右内边距+left right采用相对定位实现最终位置的矫正；
+					双飞翼布局是把主列嵌套在div后利用主列的左、右外边距定位
+		-->
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				min-width: 600px;
+			}
+			#header,#footer{
+				border: 1px solid #333333;
+				background: #AAAAAA;
+				text-align: center;
+			}
+			#container{
+				overflow: hidden;
+			}
+			
+			#left,#right,#middle{
+				float: left;
+				padding-bottom: 10000px;
+				margin-bottom: -10000px;
+			}
+			
+			#left{
+				margin-left: -100%;
+				width: 200px;
+				background: pink;
+			}
+			#right{
+				margin-left: -200px;
+				width: 200px;
+				background: pink;
+			}
+			#middle{
+				width: 100%;
+				background: deeppink;
+			}
+			#middle_inner{
+				padding: 0 200px;
+			}
+			
+			
+			
+			.clearfix{
+				*zoom:1;
+			}
+			.clearfix:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<h4>头部</h4>
+		</div>
+		<div id="container" class="clearfix">
+			<div id="middle">
+				<div id="middle_inner">
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+					<h4>middle</h4>
+				</div>
+			</div>
+			<div id="left">
+				<h4>left</h4>
+			</div>
+			<div id="right">
+				<h4>right</h4>
+			</div>
+		</div>
+		<div id="footer">
+			<h4>尾巴</h4>
+		</div>
+	</body>
+</html>
